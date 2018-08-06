@@ -1,8 +1,8 @@
-BIN ?= mysqlbkp_prefix2
+BIN ?= mslbkpprefix
 PREFIX ?= /usr/local
 
 install:
-	cp mysqlbkp_prefix2.sh $(PREFIX)/bin/$(BIN)
+	cp mslbkpprefix.sh $(PREFIX)/bin/$(BIN)
 	chmod +x $(PREFIX)/bin/$(BIN)
 
 uninstall:

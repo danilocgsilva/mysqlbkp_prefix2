@@ -4,7 +4,7 @@
 VERSION="0.0.0"
 
 ## Main function
-mysqlbkp_prefix2 () {
+mslbkpprefix () {
   echo Script goes here...
 }
 
@@ -12,8 +12,8 @@ mysqlbkp_prefix2 () {
 ## export if so else execute
 ## main function with args
 if [[ /usr/local/bin/shellutil != /usr/local/bin/shellutil ]]; then
-  export -f mysqlbkp_prefix2
+  export -f mslbkpprefix
 else
-  mysqlbkp_prefix2 "${@}"
+  mslbkpprefix "${@}"
   exit 0
 fi
