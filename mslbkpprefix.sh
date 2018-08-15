@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## version
-VERSION="1.0.0"
+VERSION="1.0.1"
 
 ## Echoes 0 if non existent. Echoes 1 if ok.
 checks_mysql_config_editor () {
@@ -58,9 +58,14 @@ mslbkpprefix () {
   read -p "Provides the login-path value: " login_path
   read -p "Provides the database name: " dbname
   read -p "Provides the database prefix: " dbprefix
-  read -p "Provides the backup location: " backup_location
+  read -p "Provides the backup location (if not provided, will use the current): " backup_location
 
-  exit_if_backup_location_not_exists
+  if [ -z $backup_location ]
+  then
+    backup_location=$(pwd)
+  else
+    exit_if_backup_location_not_exists
+  fi
 
   do_backup
 }
