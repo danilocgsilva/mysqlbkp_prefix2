@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## version
-VERSION="1.0.1"
+VERSION="1.0.2"
 
 ## Echoes 0 if non existent. Echoes 1 if ok.
 checks_mysql_config_editor () {
