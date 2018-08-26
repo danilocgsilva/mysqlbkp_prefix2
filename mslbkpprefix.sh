@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## version
-VERSION="1.0.2"
+VERSION="1.0.3"
 
 ## Echoes 0 if non existent. Echoes 1 if ok.
 checks_mysql_config_editor () {
@@ -28,11 +28,19 @@ tables_loop () {
 }
 
 ##
+mysql_dump_all_systems () {
+  if ! $(mysqldump --login-path=$login_path --column-statistics=0 $dbname $i > $table_full_path)
+  then
+    mysqldump --login-path=$login_path $dbname $i > $table_full_path
+  fi
+}
+
+##
 do_backup () {
   for i in $(tables_loop)
   do
-    table_full_path=$backup_location'/'$i.sql
-    mysqldump --login-path=$login_path --column-statistics=0 $dbname $i > $table_full_path
+    local table_full_path=$backup_location'/'$i.sql
+    mysql_dump_all_systems
     echo Table $i backuped in $table_full_path
   done
 }
