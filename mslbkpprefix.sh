@@ -32,7 +32,7 @@ do_backup () {
   for i in $(tables_loop)
   do
     table_full_path=$backup_location'/'$i.sql
-    mysqldump --login-path=$login_path $dbname $i > $table_full_path
+    mysqldump --login-path=$login_path --column-statistics=0 $dbname $i > $table_full_path
     echo Table $i backuped in $table_full_path
   done
 }
