@@ -29,7 +29,7 @@ tables_loop () {
 
 ##
 mysql_dump_all_systems () {
-  if ! $(mysqldump --login-path=$login_path --column-statistics=0 $dbname $i > $table_full_path)
+  if ! $(mysqldump --login-path=$login_path --column-statistics=0 $dbname $i > $table_full_path 2> /dev/null)
   then
     mysqldump --login-path=$login_path $dbname $i > $table_full_path
   fi
